@@ -1,7 +1,6 @@
 import json
 
-from faker import Faker
-from kafka import KafkaConsumer, KafkaProducer
+from kafka import KafkaConsumer
 
 
 def main():
