@@ -41,10 +41,7 @@ var options = {
     groupId: 'pcduc'
 };
 
-var consumer = new kafka.ConsumerGroup(options,
-    ['sampler', 'themida', 'static', 'scanner', 'release', 'result'].map(function (obj) {
-        return 'releaser-' + obj;
-    }));
+var consumer = new kafka.ConsumerGroup(options, ['input', 'address']);
 
 
 consumer.on('message', function (message) {
