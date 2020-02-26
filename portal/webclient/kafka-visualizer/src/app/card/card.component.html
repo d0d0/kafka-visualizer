@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-header" id="{{ key }}">
+    <h5 class="mb-0">
+      <button class="btn btn-link" type="button" (click)="collapsed = !collapsed">
+        {{ value[0]['sha1'] + ' ' + key }}
+      </button>
+    </h5>
+  </div>
+  <div id="{{ key + '-body' }}" [hidden]="collapsed">
+    <div class="card-body">
+      <div *ngFor="let msg of value">
+        <pre>{{ msg | json }}</pre>
+      </div>
+    </div>
+  </div>
+</div>

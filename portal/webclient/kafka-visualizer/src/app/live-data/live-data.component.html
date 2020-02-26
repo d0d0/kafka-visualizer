@@ -1,0 +1,7 @@
+<input class="form-control" type="text" placeholder="Default input" [(ngModel)]="filterValue">
+
+<div class="accordion" id="accordionExample">
+  <div class="card" *ngFor="let val of data | keyvalue | filterpipe:filterValue">
+    <app-card [key]="val.key" [value]="val.value"></app-card>
+  </div>
+</div>
