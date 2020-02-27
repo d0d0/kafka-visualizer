@@ -1,4 +1,9 @@
-<input class="form-control" type="text" placeholder="Default input" [(ngModel)]="filterValue">
+<div class="input-group mb-3">
+  <input class="form-control" type="text" placeholder="Filter" [(ngModel)]="filterValue">
+  <div class="input-group-append">
+    <button class="btn" [ngClass]="started ? 'btn-danger' : 'btn-success'" (click)="startStop()">{{ started ? 'Stop' : 'Start' }}</button>
+  </div>
+</div>
 
 <div class="accordion" id="accordionExample">
   <div class="card" *ngFor="let val of data | keyvalue | filterpipe:filterValue">

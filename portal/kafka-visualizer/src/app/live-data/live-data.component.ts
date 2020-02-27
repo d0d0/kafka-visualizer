@@ -9,6 +9,7 @@ export class LiveDataComponent implements OnInit {
   private connection: WebSocket;
   data: {};
   filterValue: string;
+  started: boolean;
 
   constructor() {
     this.data = {}
@@ -17,6 +18,7 @@ export class LiveDataComponent implements OnInit {
   ngOnInit(): void {
     this.connection = new WebSocket('ws://127.0.0.1:1337');
     this.connection.onmessage = this.onMsg.bind(this);
+    this.started = true;
   }
 
   onMsg(msg): void {
@@ -28,6 +30,16 @@ export class LiveDataComponent implements OnInit {
     } else {
       this.data[value['msg_id']] = [value]
     }
+  }
+
+  startStop(): void {
+    if (this.started) {
+      this.connection.close();
+    } else {
+      this.connection = new WebSocket('ws://127.0.0.1:1337');
+      this.connection.onmessage = this.onMsg.bind(this);
+    }
+    this.started = !this.started;
   }
 
 
